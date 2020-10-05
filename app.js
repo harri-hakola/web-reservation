@@ -1,14 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const bodyParser = require('body-parser');
 
+//Import Routes
+const postsRoute = require('./routes/posts');
 
+app.use(bodyParser.json());
+app.use('/posts', postsRoute)
 
 //Routes
 app.get('/', (req, res) => {
     res.send('We are at home');
 });
-
 
 
 //Connect to DB
